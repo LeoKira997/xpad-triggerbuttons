@@ -2346,6 +2346,8 @@ static int xpad_probe(struct usb_interface *intf, const struct usb_device_id *id
 		 * exactly the message that a controller has arrived that
 		 * we're waiting for.
 		 */
+		if (triggers_to_buttons)
+			xpad->mapping |= MAP_TRIGGERS_TO_BUTTONS;
 		error = xpad360w_start_input(xpad);
 		if (error)
 			goto err_deinit_output;
